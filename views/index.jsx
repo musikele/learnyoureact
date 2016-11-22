@@ -31,24 +31,30 @@ class TodoList extends React.Component {
 class Todo extends React.Component {
 	constructor(props) {
 		super(props);
+		//Lo stato va inizializzato nel costruttore
 		this.state = {
 			checked: false
 		}
 	}
 
+//per gestire le modifiche al click vengono creati dei 
+//metodi javascript duri e puri e assegnati ai metodi del dom (vedi render())
 	handleChange() {
 		console.log("checkbox: " + state.checked);
 		this.state.checked = !this.state.checked;
 	}
 
+
+//lo stato viene richiamato con this.state
+// mentre le props vengono recuperate da this.props
 	render() {
 		return (
 			<tr>
-				<td style={{ border: "1px solid black" }}>
+				<td style={style.tableContent}>
 					<input type="checkbox" checked={this.state.checked} onChange={this.handleChange.bind(this)} />
-				</td>
-				<td style={{ border: "1px solid black" }}>{this.props.title}</td>
-				<td style={{ border: "1px solid black" }}>{this.props.children}</td>
+				</td> 
+				<td style={style.tableContent}>{this.props.title}</td>
+				<td style={style.tableContent}>{this.props.children}</td>
 			</tr>
 		);
 	}
@@ -67,3 +73,9 @@ class TodoForm extends React.Component {
 		)
 	}
 }
+
+let style = {
+	tableContent: {
+		border: "1px solid black"
+	}
+};
